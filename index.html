@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Vežbaonica</title>
+  <meta name="description" content="Pitanja, tačni odgovori i testovi za pripremu kolokvijuma i ispita.">
+  <meta name="theme-color" content="#ffffff">
+  <script>
+    // tema se postavlja pre crtanja strane, da ekran ne bi trepnuo
+    (function () {
+      var tema;
+      try { tema = localStorage.getItem("vezbaonica.tema"); } catch (e) {}
+      if (tema !== "svetla" && tema !== "tamna") {
+        tema = matchMedia("(prefers-color-scheme: dark)").matches ? "tamna" : "svetla";
+      }
+      document.documentElement.dataset.tema = tema;
+    })();
+  </script>
+  <link rel="icon" href="slike/ikonica.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/stil.css">
+</head>
+<body>
+  <header class="zaglavlje">
+    <div class="okvir">
+      <a class="znak" href="#/"><span class="marker">Vežbaonica</span></a>
+      <div class="tema" role="group" aria-label="Tema">
+        <button type="button" data-tema="svetla" aria-pressed="false">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5V3M8 13v1.5M1.5 8H3M13 8h1.5M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Svetla
+        </button>
+        <button type="button" data-tema="tamna" aria-pressed="false">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 9.8A5.5 5.5 0 0 1 6.2 2.5a5.5 5.5 0 1 0 7.3 7.3Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          Tamna
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="app" class="okvir" tabindex="-1"></main>
+
+  <footer class="podnozje">
+    <div class="okvir">Rezultati i greške se čuvaju samo na ovom uređaju.</div>
+  </footer>
+
+  <!-- Predmeti: jedan fajl po predmetu -->
+  <script src="podaci/osnove-racunarstva.js"></script>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
