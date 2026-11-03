@@ -20,6 +20,18 @@
   const app = document.getElementById("app");
   let test = null;
 
+  // Pitanja stižu po temama: jedna tema je obično jedna prezentacija.
+  (window.TEME || []).forEach((tema) => {
+    const predmet = PREDMETI.find((p) => p.id === tema.predmet);
+    if (!predmet) {
+      console.warn("Nepoznat predmet:", tema.predmet, tema.naziv);
+      return;
+    }
+    predmet.delovi = predmet.delovi || {};
+    predmet.delovi[tema.deo] = (predmet.delovi[tema.deo] || [])
+      .concat(tema.pitanja.map((p) => Object.assign({ tema: tema.naziv }, p)));
+  });
+
   /* ---------- pomoćne funkcije ---------- */
 
   function esc(s) {
@@ -81,9 +93,16 @@
     return (DELOVI.find((d) => d.id === id) || {}).naziv || id;
   }
 
+  // id zavisi od teksta pitanja, pa zabeležene greške ostaju tačne i kad se dodaju nova pitanja
+  function otisak(s) {
+    let h = 5381;
+    for (let i = 0; i < s.length; i++) h = ((h * 33) ^ s.charCodeAt(i)) >>> 0;
+    return h.toString(36);
+  }
+
   function pitanjaDela(predmet, deoId) {
     const d = predmet.delovi || {};
-    const grupa = (id) => (d[id] || []).map((p, i) => Object.assign({}, p, { id: predmet.id + "/" + id + "/" + (i + 1), grupa: id }));
+    const grupa = (id) => (d[id] || []).map((p) => Object.assign({}, p, { id: predmet.id + "/" + id + "/" + otisak(p.pitanje + (p.slika || "")), grupa: id }));
     if (deoId === "zavrsni" && !predmet.zavrsniPosebno) {
       return grupa("kol1").concat(grupa("kol2"), grupa("zavrsni"));
     }
@@ -95,14 +114,30 @@
     return DELOVI.reduce((zbir, deo) => zbir + (d[deo.id] || []).length, 0);
   }
 
-  function slika(p) {
-    if (!p.slika) return "";
+  function temeDela(pitanja) {
+    return pitanja.reduce((teme, p) => {
+      if (p.tema && !teme.includes(p.tema)) teme.push(p.tema);
+      return teme;
+    }, []);
+  }
+
+  function slika(put, opis) {
+    if (!put) return "";
     return `
       <figure class="slika">
         <button type="button" class="slika-dugme" data-akcija="uvecaj" aria-label="Uvećaj sliku">
-          <img src="${esc(p.slika)}" alt="${esc(p.opisSlike || "Slika uz pitanje")}" loading="lazy">
+          <img src="${esc(put)}" alt="${esc(opis)}" loading="lazy">
         </button>
       </figure>`;
+  }
+
+  // slika uz pitanje ne sme da otkrije odgovor, a slikaResenja se vidi tek uz rešenje
+  function slikaPitanja(p) {
+    return slika(p.slika, "Slika uz pitanje");
+  }
+
+  function slikaResenja(p) {
+    return slika(p.slikaResenja, "Slika uz odgovor");
   }
 
   function proveriPodatke() {
@@ -231,10 +266,12 @@
 
     const grupe = [];
     pitanja.forEach((p) => {
+      const naslov = p.tema || (p.grupa === "zavrsni" ? "Dodatna pitanja za završni" : nazivDela(p.grupa));
       const poslednja = grupe[grupe.length - 1];
-      if (poslednja && poslednja.id === p.grupa) poslednja.pitanja.push(p);
-      else grupe.push({ id: p.grupa, pitanja: [p] });
+      if (poslednja && poslednja.naslov === naslov) poslednja.pitanja.push(p);
+      else grupe.push({ naslov, pitanja: [p] });
     });
+    const teme = temeDela(pitanja);
 
     let redni = 0;
     app.innerHTML = `
@@ -245,12 +282,17 @@
       </header>
       <div class="alati">
         <input class="pretraga" type="search" placeholder="Pretraži pitanja i odgovore" aria-label="Pretraži pitanja i odgovore" data-filter=".pitanje-red">
+        ${teme.length > 1 ? `
+          <select class="izbor-teme" aria-label="Tema" data-akcija="izbor-teme">
+            <option value="">Sve teme</option>
+            ${teme.map((t) => `<option value="${esc(t)}">${esc(t)}</option>`).join("")}
+          </select>` : ""}
         <label class="kvacica"><input type="checkbox" data-akcija="sakrij-odgovore"><span>Sakrij odgovore</span></label>
       </div>
       <div class="pregled">
         ${grupe.map((g) => `
           <section class="grupa">
-            ${grupe.length > 1 ? `<h2 class="grupa-naslov">${g.id === "zavrsni" ? "Dodatna pitanja za završni" : nazivDela(g.id)}</h2>` : ""}
+            ${grupe.length > 1 ? `<h2 class="grupa-naslov">${esc(g.naslov)}</h2>` : ""}
             <ul class="list stavke">${g.pitanja.map((p) => redOdgovora(p, ++redni)).join("")}</ul>
           </section>`).join("")}
         <p class="nema-rezultata" hidden>Nijedno pitanje ne odgovara pretrazi.</p>
@@ -263,14 +305,15 @@
   function redOdgovora(p, redni) {
     const tekst = normalizuj([p.pitanje].concat(p.tacni).join(" "));
     return `
-      <li class="pitanje-red" data-tekst="${esc(tekst)}">
+      <li class="pitanje-red" data-tekst="${esc(tekst)}" data-tema="${esc(p.tema || "")}">
         <span class="redni">${redni}.</span>
         <div>
           <p class="pitanje">${fmt(p.pitanje)}</p>
-          ${slika(p)}
+          ${slikaPitanja(p)}
           <div class="odgovor">
             <ul class="tacni">${p.tacni.map((t) => `<li><span class="marker">${fmt(t)}</span></li>`).join("")}</ul>
             ${p.objasnjenje ? `<p class="objasnjenje">${fmt(p.objasnjenje)}</p>` : ""}
+            ${slikaResenja(p)}
           </div>
           <button type="button" class="dugme sporedno-dugme malo otkrij" data-akcija="otkrij">Prikaži odgovor</button>
         </div>
@@ -281,16 +324,31 @@
     return `<label class="izbor"><input type="radio" name="broj" value="${vrednost}"${izabran ? " checked" : ""}><span>${tekst}</span></label>`;
   }
 
+  function izboriBroja(ukupno) {
+    const ponude = [10, 20, 30, 50, 100].filter((x) => x < ukupno);
+    const izabrano = ukupno > 20 ? 20 : ukupno;
+    return ponude.map((x) => izbor(x, x, x === izabrano)).join("")
+      + izbor(ukupno, (ponude.length ? "Sva" : "Sva pitanja") + " (" + ukupno + ")", izabrano === ukupno);
+  }
+
+  function kvacicaGresaka(pitanja) {
+    const n = napredak();
+    const pogresnih = pitanja.filter((p) => n.pogresna[p.id]).length;
+    if (!pogresnih) return "";
+    return `<label class="kvacica"><input type="checkbox" name="pogresna"><span>Samo pitanja na kojima je bilo grešaka (${pogresnih})</span></label>`;
+  }
+
+  function pitanjaForme(forma) {
+    const pitanja = pitanjaDela(nadjiPredmet(forma.dataset.predmet), forma.dataset.deo);
+    const tema = forma.elements.tema ? forma.elements.tema.value : "";
+    return tema ? pitanja.filter((p) => p.tema === tema) : pitanja;
+  }
+
   function podesavanjeTesta(predmet, deo) {
     const pitanja = pitanjaDela(predmet, deo.id);
     if (!pitanja.length) return nijePronadjeno();
     postaviNaslov("Test iz " + deo.genitiv + " – " + predmet.naziv);
-
-    const n = napredak();
-    const pogresnih = pitanja.filter((p) => n.pogresna[p.id]).length;
-    const ukupno = pitanja.length;
-    const ponude = [10, 20, 30, 50].filter((x) => x < ukupno);
-    const izabrano = ukupno > 20 ? 20 : ukupno;
+    const teme = temeDela(pitanja);
 
     app.innerHTML = `
       ${nazad(href("p", predmet.id), predmet.naziv)}
@@ -299,16 +357,21 @@
         <p>Pitanja i ponuđeni odgovori se mešaju svaki put. Kod svakog pitanja može biti jedan ili više tačnih odgovora.</p>
       </header>
       <form class="list podesavanja" data-predmet="${esc(predmet.id)}" data-deo="${deo.id}">
+        ${teme.length > 1 ? `
+          <label class="polje">
+            <span class="polje-naziv">Tema</span>
+            <select class="izbor-teme" name="tema" data-akcija="tema-testa">
+              <option value="">Sve teme (${pitanja.length})</option>
+              ${teme.map((t) => `<option value="${esc(t)}">${esc(t)} (${pitanja.filter((p) => p.tema === t).length})</option>`).join("")}
+            </select>
+          </label>` : ""}
         <fieldset>
           <legend>Broj pitanja</legend>
-          <div class="izbori">
-            ${ponude.map((x) => izbor(x, x, x === izabrano)).join("")}
-            ${izbor(ukupno, (ponude.length ? "Sva" : "Sva pitanja") + " (" + ukupno + ")", izabrano === ukupno)}
-          </div>
+          <div class="izbori">${izboriBroja(pitanja.length)}</div>
         </fieldset>
         <div class="kvacice">
           <label class="kvacica"><input type="checkbox" name="odmah" checked><span>Prikaži rešenje posle svakog pitanja</span></label>
-          ${pogresnih ? `<label class="kvacica"><input type="checkbox" name="pogresna"><span>Samo pitanja na kojima je bilo grešaka (${pogresnih})</span></label>` : ""}
+          <div class="gresaka">${kvacicaGresaka(pitanja)}</div>
         </div>
         <button class="dugme veliko" type="submit">Počni test</button>
       </form>`;
@@ -365,7 +428,7 @@
       </div>
       <div class="napredak" aria-hidden="true"><span style="width:${(test.i / ukupno) * 100}%"></span></div>
       <p class="test-tekst">${fmt(s.p.pitanje)}</p>
-      ${slika(s.p)}
+      ${slikaPitanja(s.p)}
       <p class="uputstvo">Označi sve tačne odgovore.</p>
       <ul class="opcije">
         ${s.opcije.map((o, i) => `
@@ -419,12 +482,13 @@
 
     const povratna = app.querySelector(".povratna");
     povratna.className = "povratna " + (tacno ? "dobro" : "lose");
-    povratna.innerHTML = `<p class="povratna-naslov">${naslov}</p>${s.p.objasnjenje ? `<p>${fmt(s.p.objasnjenje)}</p>` : ""}`;
+    povratna.innerHTML = `<p class="povratna-naslov">${naslov}</p>${s.p.objasnjenje ? `<p>${fmt(s.p.objasnjenje)}</p>` : ""}${slikaResenja(s.p)}`;
     povratna.hidden = false;
 
     const dugme = app.querySelector('[data-akcija="dalje"]');
     dugme.textContent = test.i < test.pitanja.length - 1 ? "Sledeće pitanje" : "Pogledaj rezultat";
     dugme.focus({ preventScroll: true });
+    povratna.scrollIntoView({ block: "nearest", behavior: "smooth" });
   }
 
   function dalje() {
@@ -512,9 +576,10 @@
         <div>
           <p class="status ${ok ? "status-tacno" : "status-netacno"}">${ok ? "Tačno" : "Netačno"}</p>
           <p class="pitanje">${fmt(s.p.pitanje)}</p>
-          ${slika(s.p)}
+          ${slikaPitanja(s.p)}
           <ul class="ishod">${ishod}</ul>
           ${s.p.objasnjenje ? `<p class="objasnjenje">${fmt(s.p.objasnjenje)}</p>` : ""}
+          ${slikaResenja(s.p)}
         </div>
       </li>`;
   }
@@ -540,11 +605,14 @@
 
   /* ---------- pretraga ---------- */
 
-  function filtriraj(polje) {
+  function filtriraj() {
+    const polje = app.querySelector("[data-filter]");
+    const izborTeme = app.querySelector('[data-akcija="izbor-teme"]');
     const upit = normalizuj(polje.value.trim());
+    const tema = izborTeme ? izborTeme.value : "";
     let vidljivih = 0;
     app.querySelectorAll(polje.dataset.filter).forEach((el) => {
-      const vidi = !upit || el.dataset.tekst.includes(upit);
+      const vidi = (!upit || el.dataset.tekst.includes(upit)) && (!tema || el.dataset.tema === tema);
       el.hidden = !vidi;
       if (vidi) vidljivih++;
     });
@@ -664,11 +732,18 @@
       app.querySelectorAll(".otkriveno").forEach((el) => el.classList.remove("otkriveno"));
     } else if (akcija === "samo-pogresni") {
       app.querySelectorAll(".red-tacno").forEach((el) => { el.hidden = e.target.checked; });
+    } else if (akcija === "izbor-teme") {
+      filtriraj();
+    } else if (akcija === "tema-testa") {
+      const forma = e.target.form;
+      const pitanja = pitanjaForme(forma);
+      forma.querySelector(".izbori").innerHTML = izboriBroja(pitanja.length);
+      forma.querySelector(".gresaka").innerHTML = kvacicaGresaka(pitanja);
     }
   });
 
   app.addEventListener("input", (e) => {
-    if (e.target.dataset.filter) filtriraj(e.target);
+    if (e.target.dataset.filter) filtriraj();
   });
 
   app.addEventListener("submit", (e) => {
@@ -681,7 +756,7 @@
     const polja = forma.elements;
     const samoPogresna = !!(polja.pogresna && polja.pogresna.checked);
 
-    let pitanja = pitanjaDela(predmet, deo.id);
+    let pitanja = pitanjaForme(forma);
     if (samoPogresna) {
       const n = napredak();
       pitanja = pitanja.filter((p) => n.pogresna[p.id]);

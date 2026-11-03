@@ -288,6 +288,19 @@ code {
 .pretraga::placeholder { color: var(--sivo); }
 .pretraga:focus { outline: 2px solid var(--plava); outline-offset: -1px; border-color: var(--plava); }
 
+.izbor-teme {
+  flex: 1 1 260px;
+  min-width: 0;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid var(--linija-jaca);
+  border-radius: 8px;
+  background: var(--list);
+  color: var(--tekst);
+  font: inherit;
+  font-size: 1rem;
+}
+
 .kvacica {
   display: inline-flex;
   align-items: flex-start;
@@ -358,6 +371,10 @@ code {
 .podesavanja fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
 .podesavanja legend { margin-bottom: 10px; padding: 0; font-weight: 600; }
 .kvacice { display: grid; gap: 14px; }
+.gresaka:empty { display: none; }
+.polje { display: grid; gap: 10px; width: 100%; }
+.polje-naziv { font-weight: 600; }
+.polje .izbor-teme { width: 100%; }
 
 .izbori { display: flex; flex-wrap: wrap; gap: 8px; }
 .izbor { position: relative; }
@@ -467,6 +484,7 @@ code {
 .povratna.dobro .povratna-naslov { color: var(--zelena); }
 .povratna.lose .povratna-naslov { color: var(--crvena); }
 .povratna p + p { margin-top: 6px; font-size: 0.95rem; color: var(--sivo); }
+.povratna { scroll-margin-bottom: 96px; }
 
 .test-akcije { display: flex; justify-content: flex-end; margin-top: 24px; }
 
