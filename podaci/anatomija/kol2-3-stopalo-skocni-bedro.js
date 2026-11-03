@@ -44,6 +44,7 @@
       pitanje: "Od kojih delova se sastoji skočna kost (talus)?",
       tacni: ["Corpus", "Collum", "Caput"],
       netacni: ["Sustenaculum", "Tuber"],
+      slikaResenja: "slike/anatomija/talus-gornja-strana.jpg",
     },
     {
       pitanje: "Sa kojom kosti se zglobljava caput tali?",
@@ -138,6 +139,7 @@
       pitanje: "Koje tetive se pripajaju za tuberositas na donjoj strani baze 1. metatarzalne kosti?",
       tacni: ["M.peroneus longus", "M.tibialis anterior"],
       netacni: ["M.peroneus brevis", "M.tibialis posterior", "M.extensor hallucis longus"],
+      slikaResenja: ["slike/anatomija/m-peroneus-longus.jpg", "slike/anatomija/m-tibialis-anterior.jpg"],
     },
     {
       pitanje: "Koji mišić se pripaja za tuberositas baze 5. metatarzalne kosti?",
@@ -188,7 +190,7 @@
       pitanje: "Koje veze se povređuju pri inverziji stopala?",
       tacni: ["Lateralne veze"],
       netacni: ["Deltoidna veza", "Ukrštene veze", "Lig.patellae"],
-      slikaResenja: "slike/anatomija/inverzija-everzija.jpg",
+      slikaResenja: ["slike/anatomija/inverzija-everzija.jpg", "slike/anatomija/lateralne-veze-povreda.jpg"],
     },
     {
       pitanje: "Koja veza se povređuje pri everziji stopala?",
@@ -221,6 +223,7 @@
       pitanje: "Šta gradi art.talocalcaneonavicularis?",
       tacni: ["Caput tali", "Zglobna površina os naviculare", "Dve prednje zglobne površine na sustenaculum-u calcaneus-a"],
       netacni: ["Zadnja zglobna površina calcaneus-a", "Trochlea tali"],
+      slikaResenja: "slike/anatomija/skocna-regija-kosti.jpg",
     },
     {
       pitanje: "Šta gradi art.subtalaris?",
@@ -295,6 +298,7 @@
       pitanje: "Šta se nalazi između vlakana m.psoas major-a?",
       tacni: ["Plexus lumbalis"],
       netacni: ["Plexus sacralis", "N.ischiadicus", "A. et v. femoralis"],
+      slikaResenja: "slike/anatomija/m-iliopsoas-plexus.jpg",
     },
     {
       pitanje: "Odakle polazi i gde se pripaja m.gluteus maximus?",
@@ -305,6 +309,8 @@
       pitanje: "Koja je glavna funkcija m.gluteus maximus-a?",
       tacni: ["Glavni je ekstenzor i spoljni rotator zgloba kuka"],
       netacni: ["Glavni je abduktor zgloba kuka", "Glavni je fleksor zgloba kuka", "Glavni je aduktor i unutrašnji rotator buta"],
+      objasnjenje: "Na slici piše da se pripaja za mali trohanter, a na predavanju se navodi tuberositas glutea.",
+      slikaResenja: "slike/anatomija/m-gluteus-maximus.jpg",
     },
     {
       pitanje: "Šta je tačno za snopove m.gluteus maximus-a?",

@@ -31,6 +31,7 @@
       pitanje: "Koja je funkcija m.pectineus-a?",
       tacni: ["Aduktor je buta", "Pomoćni je fleksor buta", "Spoljni i unutrašnji je rotator buta"],
       netacni: ["Glavni je ekstenzor kuka", "Opruža potkolenicu"],
+      slikaResenja: "slike/anatomija/aduktori-2.jpg",
     },
     {
       pitanje: "Koji mišić je prikazan na slici?",
@@ -135,11 +136,13 @@
       pitanje: "Odakle polazi m.vastus intermedius?",
       tacni: ["Sa prednje i spoljne strane butne kosti"],
       netacni: ["Sa unutrašnje usne linea asperae", "Sa spoljne usne linea asperae", "Sa SIAI"],
+      slikaResenja: "slike/anatomija/m-vastus-intermedius.jpg",
     },
     {
       pitanje: "Šta je tačno za polazišta m.vastus medialis-a i m.vastus lateralis-a?",
       tacni: ["M.vastus medialis: unutrašnja usna linea asperae", "M.vastus lateralis: spoljna usna linea asperae"],
       netacni: ["M.vastus medialis: spoljna usna linea asperae", "M.vastus lateralis: unutrašnja usna linea asperae"],
+      slikaResenja: ["slike/anatomija/m-vastus-medialis.jpg", "slike/anatomija/m-vastus-lateralis.jpg"],
     },
     {
       pitanje: "Gde je donji pripoj m.quadriceps femoris-a?",
@@ -280,6 +283,7 @@
       pitanje: "Šta je tačno za m.tibialis posterior?",
       tacni: ["Polazi sa zadnje strane tibije i fibule", "Pripaja se na tuberositas ossis navicularis", "Plantarni je fleksor i supinator stopala"],
       netacni: ["Dorzalni je fleksor stopala", "Pripaja se na bazu V metatarzalne kosti"],
+      slikaResenja: ["slike/anatomija/m-tibialis-posterior.jpg", "slike/anatomija/m-tibialis-posterior-tetiva.jpg"],
     },
     {
       pitanje: "Koji mišić je najvažniji za održavanje uzdužnog svoda stopala?",
@@ -295,6 +299,7 @@
       pitanje: "Šta je tačno za m.flexor digitorum longus?",
       tacni: ["Polazi sa zadnje strane tibije", "Pripaja se na krajnje članke 2. do 5. prsta", "Pregiba poslednja 4 prsta"],
       netacni: ["Polazi sa zadnje strane fibule", "Opruža poslednja 4 prsta"],
+      slikaResenja: "slike/anatomija/tom-dick-harry.jpg",
     },
     {
       pitanje: "Koji su dorzalni mišići stopala?",

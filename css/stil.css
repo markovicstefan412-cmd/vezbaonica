@@ -352,6 +352,10 @@ code {
   background: #fff;
 }
 
+.slike { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.slike .slika { margin: 0; max-width: 100%; }
+.vise-slika img { max-height: 240px; }
+
 .uvecano {
   position: fixed;
   inset: 0;

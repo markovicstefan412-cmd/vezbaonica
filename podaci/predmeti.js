@@ -18,7 +18,7 @@
     netacni       pogrešni ponuđeni odgovori
     objasnjenje   opciono, kratko objašnjenje koje se vidi uz rešenje
     slika         opciono, slika uz pitanje; ne sme da otkriva odgovor
-    slikaResenja  opciono, slika koja se vidi tek uz rešenje
+    slikaResenja  opciono, slika ili niz slika koje se vide tek uz rešenje
 */
 window.PREDMETI = [
   {

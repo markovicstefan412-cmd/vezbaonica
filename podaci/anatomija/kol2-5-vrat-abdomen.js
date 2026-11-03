@@ -7,6 +7,7 @@
       pitanje: "Šta pripada površnom sloju prednjih mišića vrata?",
       tacni: ["Mm.infrahyoidei", "Mm.suprahyoidei", "M.sternocleidomastoideus"],
       netacni: ["Mm.scaleni", "Prevertebralni mišići"],
+      slikaResenja: "slike/anatomija/vrat-3d.jpg",
     },
     {
       pitanje: "Šta pripada dubokom sloju prednjih mišića vrata?",
@@ -54,11 +55,13 @@
       pitanje: "Koji mišić gradi dno usne duplje (diaphragma oris)?",
       tacni: ["M.mylohyoideus"],
       netacni: ["M.geniohyoideus", "M.stylohyoideus", "M.digastricus"],
+      slikaResenja: "slike/anatomija/dno-usne-duplje.jpg",
     },
     {
       pitanje: "Koja je funkcija pothioidnih i nathioidnih mišića?",
       tacni: ["Fiksiraju grkljan za mandibulu i gornji otvor grudnog koša", "Učestvuju u govoru", "Učestvuju u gutanju"],
       netacni: ["Okreću glavu na suprotnu stranu", "Podižu rebra pri udisaju"],
+      slikaResenja: "slike/anatomija/hioidni-misici.jpg",
     },
     {
       pitanje: "Šta je tačno za uloge pothioidnih i nathioidnih mišića?",
@@ -76,6 +79,7 @@
       tacni: ["Pregiba glavu na istu stranu, a lice okreće na suprotnu"],
       netacni: ["Pregiba glavu na suprotnu stranu, a lice okreće na istu", "Opruža glavu i vrat", "Podiže grkljan"],
       objasnjenje: "To je položaj koji se vidi kod torticollis-a.",
+      slikaResenja: "slike/anatomija/vrat-bocno.jpg",
     },
     {
       pitanje: "Šta radi m.sternocleidomastoideus pri obostranoj kontrakciji?",
@@ -108,6 +112,7 @@
       pitanje: "Šta je tačno za zadnje mišiće vrata?",
       tacni: ["U njih spadaju mišići leđa", "Ekstenzori su glave i vrata"],
       netacni: ["Nalaze se ispred kičmenog stuba", "Pregibaju glavu i vrat"],
+      slikaResenja: "slike/anatomija/vrat-zadnji.jpg",
     },
     {
       pitanje: "Kakvi su po obliku abdominalni mišići?",
@@ -146,7 +151,7 @@
       pitanje: "Šta je tačno za m.pyramidalis?",
       tacni: ["Trouglastog je oblika", "Vrh mu je uz donji deo linea albae, koju zateže", "Baza mu je na preponskoj kosti"],
       netacni: ["Baza mu je na mačastom nastavku", "Pripaja se na crista iliaca"],
-      slikaResenja: "slike/anatomija/m-pyramidalis.jpg",
+      slikaResenja: ["slike/anatomija/m-pyramidalis.jpg", "slike/anatomija/m-pyramidalis-2.jpg"],
     },
     {
       pitanje: "Koji mišić je prikazan na slici?",
@@ -176,6 +181,7 @@
       pitanje: "Odakle polazi i gde se pripaja m.obliquus internus abdominis?",
       tacni: ["Donji kraj grudno-slabinske fascije, crista iliaca i lig.inguinale, do 3 poslednja rebra i aponevroze m.rectus abdominis-a"],
       netacni: ["Spoljna strana poslednjih 7 ili 8 rebara, do crista iliaca", "5., 6. i 7. rebarna hrskavica, do preponske kosti", "Donja ivica 12. rebra, do crista iliaca"],
+      slikaResenja: "slike/anatomija/obliques-abdomen.jpg",
     },
     {
       pitanje: "Šta ograničava Grynfellt-ov četvrtasti prostor?",
@@ -220,7 +226,7 @@
       pitanje: "Na kojim slabim tačkama prednjeg trbušnog zida nastaju kile (herniae)?",
       tacni: ["Umbilicus", "Canalis inguinalis", "Anulus femoralis"],
       netacni: ["Foramen obturatum", "Hiatus tendineus"],
-      slikaResenja: "slike/anatomija/kile.jpg",
+      slikaResenja: ["slike/anatomija/kile.jpg", "slike/anatomija/kile-mesta.jpg", "slike/anatomija/kila-pupak.jpg", "slike/anatomija/kila-velika-1.jpg", "slike/anatomija/kila-velika-2.jpg"],
     },
     {
       pitanje: "Koje su slabe tačke zadnjeg trbušnog zida?",

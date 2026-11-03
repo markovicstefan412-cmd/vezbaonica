@@ -18,6 +18,7 @@
       pitanje: "Čime se tibia zglobljava sa kondilima butne kosti?",
       tacni: ["Facies articularis superior"],
       netacni: ["Facies articularis inferior", "Facies articularis fibularis", "Facies patellaris"],
+      slikaResenja: "slike/anatomija/tibia-cela.jpg",
     },
     {
       pitanje: "Gde se nalazi facies articularis fibularis?",
@@ -72,11 +73,13 @@
       pitanje: "Gde se na tibiji nalazi pes anserinus?",
       tacni: ["U gornjem delu unutrašnje strane"],
       netacni: ["U gornjem delu spoljašnje strane", "Na zadnjoj strani, iznad linea m.solei", "Na donjem okrajku, uz malleolus medialis"],
+      slikaResenja: "slike/anatomija/pes-anserinus-bursitis.jpg",
     },
     {
       pitanje: "Koji mišić se pripaja za spoljašnju stranu tela tibije?",
       tacni: ["M.tibialis anterior"],
       netacni: ["M.soleus", "M.popliteus", "M.flexor digitorum longus"],
+      slikaResenja: "slike/anatomija/m-tibialis-anterior-noga.jpg",
     },
     {
       pitanje: "Koji mišić se pripaja za linea m.solei na zadnjoj strani tibije?",
@@ -109,6 +112,7 @@
       pitanje: "Sa čim se zglobljava caput fibulae?",
       tacni: ["Sa condylus lateralis-om tibije"],
       netacni: ["Sa condylus medialis-om tibije", "Sa condylus lateralis-om butne kosti", "Sa trochlea tali"],
+      slikaResenja: "slike/anatomija/tibia-fibula-detalji.jpg",
     },
     {
       pitanje: "Koji mišić se pripaja za apex capitis fibulae?",
@@ -124,6 +128,7 @@
       pitanje: "Crista medialis deli zadnju stranu fibule na dva polja. Šta je tačno?",
       tacni: ["Unutrašnje polje: m.tibialis posterior", "Spoljašnje polje: m.flexor hallucis longus"],
       netacni: ["Unutrašnje polje: m.flexor hallucis longus", "Spoljašnje polje: m.tibialis posterior"],
+      slikaResenja: "slike/anatomija/tibia-zadnja-detalji.jpg",
     },
     {
       pitanje: "Koji mišić se još pripaja za zadnju stranu tela fibule?",
@@ -140,6 +145,7 @@
       pitanje: "Koji mišići se pripajaju za unutrašnju stranu tela fibule?",
       tacni: ["M.extensor digitorum longus", "M.extensor hallucis longus"],
       netacni: ["M.peroneus longus", "M.peroneus brevis", "M.soleus"],
+      slikaResenja: "slike/anatomija/prednja-potkolenica-misici.jpg",
     },
     {
       pitanje: "Koji živac je vrlo često povređen kod preloma fibule na spoju glave i tela?",
@@ -172,6 +178,7 @@
       pitanje: "Šta je tačno za meniscus medialis?",
       tacni: ["Duži je i uži", "U bliskom je kontaktu sa zglobnom kapsulom", "Podložniji je povredama"],
       netacni: ["Kraći je i širi", "Nije u bliskom kontaktu sa kapsulom"],
+      slikaResenja: "slike/anatomija/meniskus-povrede.jpg",
     },
     {
       pitanje: "Šta je tačno za meniscus lateralis?",
@@ -182,6 +189,7 @@
       pitanje: "Gde se pripajaju prednji i zadnji rogovi meniskusa?",
       tacni: ["U area intercondylaris anterior et posterior"],
       netacni: ["U fossa intercondylaris butne kosti", "Na tuberositas tibiae", "Na epicondylus medialis et lateralis"],
+      slikaResenja: "slike/anatomija/tibia-rogovi-meniskusa.jpg",
     },
     {
       pitanje: "Koja veza povezuje prednje delove meniskusa?",
@@ -193,6 +201,7 @@
       pitanje: "Šta povezuju ukrštene veze kolena (ligg.cruciata)?",
       tacni: ["Interkondilarnu jamu butne kosti sa prednjim i zadnjim interkondilarnim poljem tibije"],
       netacni: ["Čašicu sa tuberositas tibiae", "Epikondile butne kosti sa glavom fibule", "Prednje delove meniskusa međusobno"],
+      slikaResenja: "slike/anatomija/lca.jpg",
     },
     {
       pitanje: "Šta je tačno za ukrštene veze kolena?",
@@ -204,12 +213,13 @@
       tacni: ["Prekomerna rotacija u zglobu kolena", "Stopalo najčešće ostaje ukopano na podlozi", "Koleno je u valgus položaju"],
       netacni: ["Koleno je u varus položaju", "Femur i tibia se rotiraju u istom pravcu"],
       objasnjenje: "Femur i tibia se rotiraju u suprotnim pravcima. Ruptura LCA je jedna od najtežih povreda u sportu.",
-      slikaResenja: "slike/anatomija/lca-mehanizam.jpg",
+      slikaResenja: ["slike/anatomija/lca-mehanizam.jpg", "slike/anatomija/lca-povreda-sport.jpg", "slike/anatomija/lca-povreda-kosarka.jpg", "slike/anatomija/lca-doskok.jpg"],
     },
     {
       pitanje: "Šta spada u prednja pojačanja zglobne kapsule kolena?",
       tacni: ["Lig.patellae", "Retinaculum patellae mediale et laterale"],
       netacni: ["Lig.collaterale mediale", "Lig.popliteum obliquum"],
+      slikaResenja: "slike/anatomija/koleno-prednja-pojacanja.jpg",
     },
     {
       pitanje: "Čiji su produžeci prednja pojačanja zglobne kapsule kolena?",
@@ -287,11 +297,13 @@
       pitanje: "Šta je tačno za spoljašnju rotaciju u zglobu kolena?",
       tacni: ["3 do 4 puta je veća od unutrašnje", "Ukrštene veze se odvijaju i olabave"],
       netacni: ["Manja je od unutrašnje", "Ukrštene veze se uvrću i zatežu"],
+      slikaResenja: "slike/anatomija/koleno-rotacija-stopalo.jpg",
     },
     {
       pitanje: "Šta je posledica prekomerne rotacije u zglobu kolena?",
       tacni: ["Ruptura ligamenata"],
       netacni: ["Prelom čašice", "Pad stopala", "Hofov sindrom"],
+      slikaResenja: ["slike/anatomija/lca-rekonstrukcija-1.jpg", "slike/anatomija/lca-rekonstrukcija-2.jpg", "slike/anatomija/lca-rekonstrukcija-operacija.jpg"],
     },
   ],
 });

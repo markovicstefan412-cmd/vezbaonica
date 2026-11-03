@@ -100,6 +100,7 @@
       pitanje: "Koji deo sedalne kosti čini zadnji deo acetabuluma?",
       tacni: ["Corpus"],
       netacni: ["Ramus ossis ischii", "Tuber ischiadicum", "Spina ischiadica"],
+      slikaResenja: "slike/anatomija/os-ischii.jpg",
     },
     {
       pitanje: "Šta ograničava foramen obturatum pozadi i dole?",
@@ -126,6 +127,7 @@
       pitanje: "Koji mišić prolazi kroz foramen ischiadicum majus?",
       tacni: ["M.piriformis"],
       netacni: ["M.obturatorius internus", "M.obturatorius externus", "M.quadratus femoris"],
+      slikaResenja: "slike/anatomija/foramen-ischiadicum-misici.jpg",
     },
     {
       pitanje: "Koji mišić prolazi kroz foramen ischiadicum minus?",
@@ -141,11 +143,13 @@
       pitanje: "Šta zajedno grade telo preponske i telo bedrene kosti?",
       tacni: ["Eminentia iliopectinea"],
       netacni: ["Pecten ossis pubis", "Tuberculum pubicum", "Facies lunata"],
+      slikaResenja: "slike/anatomija/karlicna-kost-obe-strane.jpg",
     },
     {
       pitanje: "Čime se završava pecten ossis pubis (češljasti greben)?",
       tacni: ["Tuberculum pubicum"],
       netacni: ["Eminentia iliopectinea", "Spina ischiadica", "Tuber ischiadicum"],
+      slikaResenja: "slike/anatomija/karlicna-kost-medijalno.jpg",
     },
     {
       pitanje: "Koji mišić se pripaja za pecten ossis pubis?",
@@ -166,6 +170,7 @@
       pitanje: "Koje kosti grade karlicu (pelvis)?",
       tacni: ["Karlične kosti", "Krsna kost", "Trtična kost"],
       netacni: ["Butne kosti", "Lumbalni pršljenovi"],
+      slikaResenja: "slike/anatomija/karlica-spreda.jpg",
     },
     {
       pitanje: "Koja je uloga karlice?",
@@ -210,6 +215,7 @@
       tacni: ["Crista intertrochanterica", "Linea intertrochanterica"],
       netacni: ["Linea aspera", "Tuberositas glutea"],
       objasnjenje: "Crista je zadnji, a linea prednji greben.",
+      slikaResenja: "slike/anatomija/femur-gornji-okrajak-2.jpg",
     },
     {
       pitanje: "Koji mišić se pripaja na zadnjem grebenu između trohantera (crista intertrochanterica)?",
@@ -220,7 +226,7 @@
       pitanje: "Uz koji deo butne kosti se vezuje trohanterični sindrom?",
       tacni: ["Trochanter major"],
       netacni: ["Trochanter minor", "Caput femoris", "Condylus lateralis"],
-      slikaResenja: "slike/anatomija/trohanterna-bursa.jpg",
+      slikaResenja: ["slike/anatomija/trohanterna-bursa.jpg", "slike/anatomija/it-traka.jpg", "slike/anatomija/trohanterni-sindrom.jpg"],
     },
     {
       pitanje: "Šta se pripaja za hrapavu liniju (linea aspera) na zadnjoj strani butne kosti?",
@@ -247,6 +253,7 @@
       pitanje: "Šta se nalazi na donjem okrajku butne kosti?",
       tacni: ["Condylus lateralis et medialis", "Facies patellaris", "Fossa intercondylaris"],
       netacni: ["Trochanter minor", "Collum femoris"],
+      slikaResenja: "slike/anatomija/femur-donji-okrajak.jpg",
     },
     {
       pitanje: "Šta spreda spaja kondile butne kosti?",
@@ -293,6 +300,7 @@
       pitanje: "Šta je tačno za acetabulum?",
       tacni: ["Facies lunata je pokrivena hrskavicom", "Pulvinar acetabuli je jastuče od vezivnog tkiva"],
       netacni: ["Pulvinar acetabuli je pokriven hrskavicom", "Facies lunata je jastuče od vezivnog tkiva"],
+      slikaResenja: "slike/anatomija/zglob-kuka-otvoren.jpg",
     },
     {
       pitanje: "Koja je uloga labrum acetabulare?",

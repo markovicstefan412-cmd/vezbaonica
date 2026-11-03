@@ -137,7 +137,9 @@
   }
 
   function slikaResenja(p) {
-    return slika(p.slikaResenja, "Slika uz odgovor");
+    const slike = [].concat(p.slikaResenja || []);
+    if (!slike.length) return "";
+    return `<div class="slike${slike.length > 1 ? " vise-slika" : ""}">${slike.map((put) => slika(put, "Slika uz odgovor")).join("")}</div>`;
   }
 
   function proveriPodatke() {
